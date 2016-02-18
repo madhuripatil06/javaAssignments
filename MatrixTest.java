@@ -58,4 +58,32 @@ public class MatrixTest{
 		assertTrue(sum.isEqualTo(sumShouldbe));
  	}
 
+ 	@Test
+ 	public void multiply_2_by_2_matrix(){
+ 		Matrix multiplicant = new Matrix(2,2);
+		multiplicant.insertValue(0,0,2);
+		multiplicant.insertValue(0,1,3);
+		multiplicant.insertValue(1,0,1);
+		multiplicant.insertValue(1,1,5);
+
+ 		Matrix multiplier = new Matrix(2,2);
+		multiplier.insertValue(0,0,9);
+		multiplier.insertValue(0,1,10);
+		multiplier.insertValue(1,0,2);
+		multiplier.insertValue(1,1,7);
+
+		Matrix resultedMatrix = multiplicant.multiplyWith(multiplier);
+
+		Matrix ProductMatrixShouldBe = new Matrix(2,2);
+		ProductMatrixShouldBe.insertValue(0,0,24);
+		ProductMatrixShouldBe.insertValue(0,1,41);
+		ProductMatrixShouldBe.insertValue(1,0,19);
+		ProductMatrixShouldBe.insertValue(1,1,45);
+
+		assertTrue(ProductMatrixShouldBe.isEqualTo(resultedMatrix));
+ 	};
+		
+
+
+
 }
