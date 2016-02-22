@@ -65,11 +65,15 @@ class Matrix{
 		return sum;
 	}
 
+	private boolean isValidToMultiply(Matrix other){
+		return this.rows < other.rows && this.columns > other.columns;
+	}
+
 	public Matrix multiplyWith(Matrix multiplier){
-		if(this.isOfSameSize(multiplier)){
-			Matrix productMatrix = new Matrix(this.rows , this.columns);
+		if(this.isOfSameSize(multiplier) || this.isValidToMultiply(multiplier)){
+			Matrix productMatrix = new Matrix(this.rows , multiplier.columns);
 			for(int i = 0 ; i < this.rows ; i++){
-				for(int j = 0 ; j < this.columns ; j++){
+				for(int j = 0 ; j < multiplier.columns ; j++){
 					int [] row = this.getRow(i);
 					int [] column = multiplier.getColumn(j);
 					int resultedInt = getMultiplicationOf(row ,column);
@@ -80,6 +84,20 @@ class Matrix{
 		};
 		return new Matrix(0,0);
 	}
+
+	private boolean isSquareMatrix(){
+		return this.rows == this.columns;
+	}
+
+	public int getDeterminant(){
+		if(isSquareMatrix()){
+			if(this.rows != 2){};
+			return (this.matrix[0][0]*this.matrix[1][1])- (this.matrix[0][1]*this.matrix[1][0]);
+		}
+		return 0;
+	}
+
+
 
 	public String toString(){
 		String matrix = "\n";

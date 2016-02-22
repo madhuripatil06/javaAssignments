@@ -82,8 +82,39 @@ public class MatrixTest{
 
 		assertTrue(ProductMatrixShouldBe.isEqualTo(resultedMatrix));
  	};
+
+
+ 	@Test
+ 	public void multiply_1_by_3_matrix_with_3_by_1_matrix(){
+ 		Matrix multiplicant = new Matrix(1,3);
+		multiplicant.insertValue(0,0,1);
+		multiplicant.insertValue(0,1,2);
+		multiplicant.insertValue(0,2,3);
 		
 
 
+ 		Matrix multiplier = new Matrix(3,1);
+		multiplier.insertValue(0,0,1);
+		multiplier.insertValue(1,0,2);
+		multiplier.insertValue(2,0,3);
 
+		Matrix resultedMatrix = multiplicant.multiplyWith(multiplier);
+
+		Matrix ProductMatrixShouldBe = new Matrix(1,1);
+		ProductMatrixShouldBe.insertValue(0,0,14);
+
+		assertTrue(ProductMatrixShouldBe.isEqualTo(resultedMatrix));
+ 	}
+		
+ 	@Test
+ 	public void get_a_determinant_of_the_2_by_2_matrix(){
+ 		Matrix given = new Matrix(2,2);
+ 		given.insertValue(0,0,1);
+ 		given.insertValue(0,1,2);
+ 		given.insertValue(1,0,3);
+ 		given.insertValue(1,1,4);
+
+ 		int determinant = given.getDeterminant();
+ 		assertEquals(-2,determinant);
+ 	}
 }
